@@ -1,33 +1,12 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
-trigger:
-- main
-
 pool:
  name: TF
 
 stages:
-  - stage: Test
-    jobs: 
-      - job: TestJob
-  - stage: DeployUS1
-    dependsOn: Test
+  - stage: stageA
     jobs:
-      - job: DeployUS1job
+      - job: stageAjob
 
-  - stage: DeployUS2
-    dependsOn: Test
-    pool:
-     name: terraform
+  - stage: stageB
+    dependsOn: []
     jobs:
-      - job: DeployUS2job
-
-  - stage: DeployEurope
-    dependsOn:
-     - DeployUS1
-     - DeployUS2
-    jobs:
-      - job: DeployEuropeJOb
+     - job: stageBjob
