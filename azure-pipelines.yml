@@ -9,4 +9,4 @@ stages:
   - stage: stageB
     dependsOn: []
     jobs:
-     - job: stageBjob
+     - job: stageBjoba
