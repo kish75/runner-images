@@ -9,5 +9,6 @@ stages:
   - stage: stageB
     pool:
      name: Default
+    dependsOn: []
     jobs:
      - job: stageBjob
