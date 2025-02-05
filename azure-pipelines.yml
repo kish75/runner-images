@@ -9,11 +9,23 @@ trigger:
 pool:
  name: TF
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+stages:
+  - stage: Test
+    jobs: 
+      - job: TestJob
+  - stage: DeployUS1
+    dependsOn: Test
+    jobs:
+      - job: DeployUS1job
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+  - stage: DeployUS2
+    dependsOn: Test
+    jobs:
+      - job: DeployUS2job
+
+  - stage: DeployEurope
+    dependsOn:
+     - DeployUS1
+     - DeployUS2
+    jobs:
+      - job: DeployEuropeJOb
