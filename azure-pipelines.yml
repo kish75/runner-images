@@ -20,6 +20,8 @@ stages:
 
   - stage: DeployUS2
     dependsOn: Test
+    pool:
+     name: terraform
     jobs:
       - job: DeployUS2job
 
