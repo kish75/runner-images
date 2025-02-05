@@ -7,6 +7,5 @@ stages:
       - job: stageAjob
 
   - stage: stageB
-    dependsOn: []
     jobs:
      - job: stageBjob
